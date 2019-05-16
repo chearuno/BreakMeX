@@ -126,6 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameMessage.setScale(0.0)
         addChild(gameMessage)
         
+        
         let gameTheme = SKSpriteNode(imageNamed: "theme")
         gameTheme.name = GameThemeName
         gameTheme.position = CGPoint(x: frame.midX, y: frame.midY/2)
