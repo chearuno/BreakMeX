@@ -13,7 +13,8 @@ let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
 let GameMessageName = "gameMessage"
-let GameThemeName = "gameTheme"
+let ThemeCategoryName = "Theme"
+//let GameThemeName = "gameTheme"
 
 let BallCategory   : UInt32 = 0x1 << 0
 let BottomCategory : UInt32 = 0x1 << 1
@@ -25,6 +26,7 @@ let BorderCategory : UInt32 = 0x1 << 4
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isFingerOnPaddle = false
+    var isFingerOnTheme = false
     
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
@@ -127,12 +129,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(gameMessage)
         
         
-        let gameTheme = SKSpriteNode(imageNamed: "theme")
-        gameTheme.name = GameThemeName
-        gameTheme.position = CGPoint(x: frame.midX, y: frame.midY/2)
-        gameTheme.zPosition = 5
-        gameTheme.setScale(0.1)
-        addChild(gameTheme)
+//        let gameTheme = SKSpriteNode(imageNamed: "theme")
+//        gameTheme.name = GameThemeName
+//        gameTheme.position = CGPoint(x: frame.midX, y: frame.midY/2)
+//        gameTheme.zPosition = 5
+//        gameTheme.setScale(0.1)
+//        addChild(gameTheme)
         
         let trailNode = SKNode()
         trailNode.zPosition = 1
@@ -161,6 +163,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                      print("Began touch on paddle")
                     isFingerOnPaddle = true
                 }
+            }
+            if let body = physicsWorld.body(at: touchLocation) {
+            if body.node!.name == ThemeCategoryName {
+                print("Began touch on ThemeCategoryName")
+                isFingerOnPaddle = true
+            }
             }
             
         case is GameOver:
