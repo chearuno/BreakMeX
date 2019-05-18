@@ -11,10 +11,12 @@ import GameplayKit
 
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
-let BlockCategoryName = "block"
+let BlockCategoryName = "block2"
 let GameMessageName = "gameMessage"
-let ThemeCategoryName = "Theme"
+let ThemeCategoryName = "theme"
 //let GameThemeName = "gameTheme"
+
+
 
 let BallCategory   : UInt32 = 0x1 << 0
 let BottomCategory : UInt32 = 0x1 << 1
@@ -23,10 +25,29 @@ let PaddleCategory : UInt32 = 0x1 << 3
 let BorderCategory : UInt32 = 0x1 << 4
 
 
+
+
+
+
+//    let playableRect: CGRect
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isFingerOnPaddle = false
-    var isFingerOnTheme = false
+   // var isFingerOnTheme = false
+    var lifeLabel: SKLabelNode!
+    var life:Int = 3{
+        didSet{
+            lifeLabel.text = "Lives: \(life)"
+        }
+    }
+    
+    var scoreLabel: SKLabelNode!
+    var score:Int = 0{
+        didSet{
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
@@ -69,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let ball = childNode(withName: BallCategoryName) as! SKSpriteNode
         
-        let bottomRect = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: 1)
+        let bottomRect = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: 0.1)
         let bottom = SKNode()
         bottom.physicsBody = SKPhysicsBody(edgeLoopFrom: bottomRect)
         addChild(bottom)
@@ -83,17 +104,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         ball.physicsBody!.contactTestBitMask = BottomCategory | BlockCategory | BorderCategory | PaddleCategory
         
+        lifeLabel = SKLabelNode(text: "Lifes: \(life)")
+        lifeLabel.fontColor = UIColor.white
+        lifeLabel.fontSize = 20
+        lifeLabel.fontName = "Helvetica Neue-Bold"
+        lifeLabel.zPosition = 5
+        lifeLabel.horizontalAlignmentMode = .left
+        lifeLabel.verticalAlignmentMode = .bottom
+        lifeLabel.position = CGPoint(
+            x: CGFloat(20),
+            y: CGFloat(15))
+        self.addChild(lifeLabel)
+        
+        scoreLabel = SKLabelNode(text: "Score: \(score)")
+        scoreLabel.fontColor = UIColor.white
+        scoreLabel.fontSize = 20
+        scoreLabel.fontName = "Helvetica Neue-Bold"
+        scoreLabel.zPosition = 5
+        scoreLabel.horizontalAlignmentMode = .left
+        scoreLabel.verticalAlignmentMode = .bottom
+        scoreLabel.position = CGPoint(
+            x: CGFloat(470),
+            y: CGFloat(15))
+        self.addChild(scoreLabel)
+        
         // 1.
         let numberOfBlocks = 10
-        let blockWidth = SKSpriteNode(imageNamed: "block").size.width
+        let blockWidth = SKSpriteNode(imageNamed: "block2").size.width
         let totalBlocksWidth = blockWidth * CGFloat(numberOfBlocks)
         // 2.
         let xOffset = (frame.width - totalBlocksWidth) / 2
         // 3.
         for i in 0..<numberOfBlocks {
-            let block = SKSpriteNode(imageNamed: "block.png")
+            let block = SKSpriteNode(imageNamed: "block2.png")
             block.position = CGPoint(x: xOffset + CGFloat(CGFloat(i) + 0.5) * blockWidth,
-                                     y: frame.height * 0.8)
+                                     y: frame.height * 0.95)
             
             block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
             block.physicsBody!.allowsRotation = false
@@ -106,9 +151,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(block)
         }
         for j in 0..<numberOfBlocks {
-            let block = SKSpriteNode(imageNamed: "block.png")
+            let block = SKSpriteNode(imageNamed: "block2.png")
             block.position = CGPoint(x: xOffset + CGFloat(CGFloat(j) + 0.5) * blockWidth,
-                                     y: frame.height * 0.75)
+                                     y: frame.height * 0.9)
             
             block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
             block.physicsBody!.allowsRotation = false
@@ -158,16 +203,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let touch = touches.first
             let touchLocation = touch!.location(in: self)
             
+            let touchTheme = touches.first
+            let touchLocationTheme = touchTheme!.location(in: self)
+            
             if let body = physicsWorld.body(at: touchLocation) {
                 if body.node!.name == PaddleCategoryName {
                      print("Began touch on paddle")
                     isFingerOnPaddle = true
                 }
             }
-            if let body = physicsWorld.body(at: touchLocation) {
-            if body.node!.name == ThemeCategoryName {
-                print("Began touch on ThemeCategoryName")
-                isFingerOnPaddle = true
+            if let bodyTheme = physicsWorld.body(at: touchLocationTheme) {
+            if bodyTheme.node!.name == ThemeCategoryName {
+                print("aaaaa ThemeCategoryName")
+//                isFingerOnPaddle = true
             }
             }
             
@@ -209,6 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameState.update(deltaTime: currentTime)
     }
     
+    
     // MARK: - SKPhysicsContactDelegate
     func didBegin(_ contact: SKPhysicsContact) {
         if gameState.currentState is Playing {
@@ -226,9 +275,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // React to contact with bottom of screen
             if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == BottomCategory {
                 print("Hit bottom. First contact has been made.")
-                gameState.enter(GameOver.self)
-                gameWon = false
+                life = life - 1
+                //gameState.enter(GameOver.self)
+                //gameWon = false
             }
+            if (life == 0 ){
+                gameState.enter(GameOver.self)
+                 gameWon = false
+            }
+            
             // React to contact with blocks
             if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == BlockCategory {
                 breakBlock(secondBody.node!)
@@ -261,6 +316,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(particles)
         particles.run(SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.removeFromParent()]))
         node.removeFromParent()
+        score = score + 1
     }
     
     func randomFloat(from:CGFloat, to:CGFloat) -> CGFloat {

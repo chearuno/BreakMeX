@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B68946B228FC39000B0B329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B689469228FC39000B0B329 /* Assets.xcassets */; };
+		0B68946D228FC3D300B0B329 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B68946C228FC3D300B0B329 /* fire.sks */; };
 		0B941F0B228D0E7700E69F28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B941F0A228D0E7700E69F28 /* AppDelegate.swift */; };
 		0B941F0D228D0E7800E69F28 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F0C228D0E7800E69F28 /* GameScene.sks */; };
 		0B941F11228D0E7800E69F28 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B941F10228D0E7800E69F28 /* GameScene.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B689469228FC39000B0B329 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B68946C228FC3D300B0B329 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
 		0B941F07228D0E7700E69F28 /* BreakMeX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakMeX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B941F0A228D0E7700E69F28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B941F0C228D0E7800E69F28 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 			children = (
 				0B941F2C228D112F00E69F28 /* BallTrail.sks */,
 				0B941F2D228D113000E69F28 /* BrokenPlatform.sks */,
+				0B689469228FC39000B0B329 /* Assets.xcassets */,
+				0B68946C228FC3D300B0B329 /* fire.sks */,
 			);
 			path = Particales;
 			sourceTree = "<group>";
@@ -187,12 +193,14 @@
 				0B941F35228D114400E69F28 /* game-over.wav in Resources */,
 				0B941F38228D114400E69F28 /* game-won.mp3 in Resources */,
 				0B941F36228D114400E69F28 /* pongblip.wav in Resources */,
+				0B68946B228FC39000B0B329 /* Assets.xcassets in Resources */,
 				0B941F2E228D113100E69F28 /* BallTrail.sks in Resources */,
 				0B941F39228D114400E69F28 /* paddleBlip.wav in Resources */,
 				0B941F37228D114400E69F28 /* BambooBreak.wav in Resources */,
 				0B941F0D228D0E7800E69F28 /* GameScene.sks in Resources */,
 				0B941F18228D0E7900E69F28 /* Assets.xcassets in Resources */,
 				0B941F1B228D0E7900E69F28 /* LaunchScreen.storyboard in Resources */,
+				0B68946D228FC3D300B0B329 /* fire.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
