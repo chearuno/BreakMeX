@@ -88,6 +88,7 @@
 		0B941F09228D0E7700E69F28 /* BreakMeX */ = {
 			isa = PBXGroup;
 			children = (
+				0B948D1522901A3300FC98F0 /* Audio */,
 				0B941F2B228D111D00E69F28 /* Particales */,
 				0B941F2A228D10EF00E69F28 /* Sounds */,
 				0B941F0A228D0E7700E69F28 /* AppDelegate.swift */,
@@ -116,13 +117,6 @@
 		0B941F2A228D10EF00E69F28 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				0BCED3CA2290169900AF70BA /* BambooBreak.wav */,
-				0BCED3CB2290169900AF70BA /* game-over.wav */,
-				0BCED3CE2290169900AF70BA /* game-won.mp3 */,
-				0BCED3CC2290169900AF70BA /* paddleBlip.wav */,
-				0BCED3CD2290169900AF70BA /* pongblip.wav */,
-				0BCED3BD229015A600AF70BA /* hit1.wav */,
-				0BCED3BC229015A600AF70BA /* hit2.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -137,6 +131,20 @@
 				0B689469228FC39000B0B329 /* Assets.xcassets */,
 			);
 			path = Particales;
+			sourceTree = "<group>";
+		};
+		0B948D1522901A3300FC98F0 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				0BCED3CA2290169900AF70BA /* BambooBreak.wav */,
+				0BCED3CB2290169900AF70BA /* game-over.wav */,
+				0BCED3CE2290169900AF70BA /* game-won.mp3 */,
+				0BCED3CC2290169900AF70BA /* paddleBlip.wav */,
+				0BCED3CD2290169900AF70BA /* pongblip.wav */,
+				0BCED3BD229015A600AF70BA /* hit1.wav */,
+				0BCED3BC229015A600AF70BA /* hit2.wav */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
