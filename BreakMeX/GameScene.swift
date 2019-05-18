@@ -11,7 +11,9 @@ import GameplayKit
 
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
-let BlockCategoryName = "block2"
+let BlockCategoryName = "block"
+let BlockCategoryName2 = "block1"
+let BlockCategoryName3 = "block2"
 let GameMessageName = "gameMessage"
 let ThemeCategoryName = "theme"
 //let GameThemeName = "gameTheme"
@@ -23,7 +25,8 @@ let BottomCategory : UInt32 = 0x1 << 1
 let BlockCategory  : UInt32 = 0x1 << 2
 let PaddleCategory : UInt32 = 0x1 << 3
 let BorderCategory : UInt32 = 0x1 << 4
-
+let BlockCategory2  : UInt32 = 0x1 << 5
+let BlockCategory3  : UInt32 = 0x1 << 6
 
 
 
@@ -34,7 +37,7 @@ let BorderCategory : UInt32 = 0x1 << 4
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isFingerOnPaddle = false
-   // var isFingerOnTheme = false
+    // var isFingerOnTheme = false
     var lifeLabel: SKLabelNode!
     var life:Int = 3{
         didSet{
@@ -102,69 +105,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         paddle.physicsBody!.categoryBitMask = PaddleCategory
         borderBody.categoryBitMask = BorderCategory
         
-        ball.physicsBody!.contactTestBitMask = BottomCategory | BlockCategory | BorderCategory | PaddleCategory
+        ball.physicsBody!.contactTestBitMask = BottomCategory | BlockCategory | BorderCategory | PaddleCategory | BlockCategory2 | BlockCategory3
         
         lifeLabel = SKLabelNode(text: "Lifes: \(life)")
         lifeLabel.fontColor = UIColor.white
-        lifeLabel.fontSize = 20
+        lifeLabel.fontSize = 18
         lifeLabel.fontName = "Helvetica Neue-Bold"
         lifeLabel.zPosition = 5
         lifeLabel.horizontalAlignmentMode = .left
         lifeLabel.verticalAlignmentMode = .bottom
         lifeLabel.position = CGPoint(
             x: CGFloat(20),
-            y: CGFloat(15))
+            y: CGFloat(6))
         self.addChild(lifeLabel)
         
         scoreLabel = SKLabelNode(text: "Score: \(score)")
         scoreLabel.fontColor = UIColor.white
-        scoreLabel.fontSize = 20
+        scoreLabel.fontSize = 18
         scoreLabel.fontName = "Helvetica Neue-Bold"
         scoreLabel.zPosition = 5
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.verticalAlignmentMode = .bottom
         scoreLabel.position = CGPoint(
             x: CGFloat(470),
-            y: CGFloat(15))
+            y: CGFloat(6))
         self.addChild(scoreLabel)
         
-        // 1.
-        let numberOfBlocks = 10
-        let blockWidth = SKSpriteNode(imageNamed: "block2").size.width
-        let totalBlocksWidth = blockWidth * CGFloat(numberOfBlocks)
-        // 2.
-        let xOffset = (frame.width - totalBlocksWidth) / 2
-        // 3.
-        for i in 0..<numberOfBlocks {
-            let block = SKSpriteNode(imageNamed: "block2.png")
-            block.position = CGPoint(x: xOffset + CGFloat(CGFloat(i) + 0.5) * blockWidth,
-                                     y: frame.height * 0.95)
-            
-            block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
-            block.physicsBody!.allowsRotation = false
-            block.physicsBody!.friction = 0.0
-            block.physicsBody!.affectedByGravity = false
-            block.physicsBody!.isDynamic = false
-            block.name = BlockCategoryName
-            block.physicsBody!.categoryBitMask = BlockCategory
-            block.zPosition = 2
-            addChild(block)
-        }
-        for j in 0..<numberOfBlocks {
-            let block = SKSpriteNode(imageNamed: "block2.png")
-            block.position = CGPoint(x: xOffset + CGFloat(CGFloat(j) + 0.5) * blockWidth,
-                                     y: frame.height * 0.9)
-            
-            block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
-            block.physicsBody!.allowsRotation = false
-            block.physicsBody!.friction = 0.0
-            block.physicsBody!.affectedByGravity = false
-            block.physicsBody!.isDynamic = false
-            block.name = BlockCategoryName
-            block.physicsBody!.categoryBitMask = BlockCategory
-            block.zPosition = 2
-            addChild(block)
-        }
+       generateBlocks()
         
         let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
         gameMessage.name = GameMessageName
@@ -174,12 +141,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(gameMessage)
         
         
-//        let gameTheme = SKSpriteNode(imageNamed: "theme")
-//        gameTheme.name = GameThemeName
-//        gameTheme.position = CGPoint(x: frame.midX, y: frame.midY/2)
-//        gameTheme.zPosition = 5
-//        gameTheme.setScale(0.1)
-//        addChild(gameTheme)
+        //        let gameTheme = SKSpriteNode(imageNamed: "theme")
+        //        gameTheme.name = GameThemeName
+        //        gameTheme.position = CGPoint(x: frame.midX, y: frame.midY/2)
+        //        gameTheme.zPosition = 5
+        //        gameTheme.setScale(0.1)
+        //        addChild(gameTheme)
         
         let trailNode = SKNode()
         trailNode.zPosition = 1
@@ -208,15 +175,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if let body = physicsWorld.body(at: touchLocation) {
                 if body.node!.name == PaddleCategoryName {
-                     print("Began touch on paddle")
+                    print("Began touch on paddle")
                     isFingerOnPaddle = true
                 }
             }
             if let bodyTheme = physicsWorld.body(at: touchLocationTheme) {
-            if bodyTheme.node!.name == ThemeCategoryName {
-                print("aaaaa ThemeCategoryName")
-//                isFingerOnPaddle = true
-            }
+                if bodyTheme.node!.name == ThemeCategoryName {
+                    print("aaaaa ThemeCategoryName")
+                    //                isFingerOnPaddle = true
+                }
             }
             
         case is GameOver:
@@ -279,15 +246,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //gameState.enter(GameOver.self)
                 //gameWon = false
             }
-            if (life == 0 ){
-                gameState.enter(GameOver.self)
-                 gameWon = false
-            }
+//            if (life == 0 ){
+//                gameState.enter(GameOver.self)
+//                gameWon = false
+//            }
             
             // React to contact with blocks
             if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == BlockCategory {
                 breakBlock(secondBody.node!)
-                if isGameWon() {
+                if isGameWon() && isGameWon2() && isGameWon3()  {
+                    gameState.enter(GameOver.self)
+                    gameWon = true
+                }
+            }
+            if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == BlockCategory2 {
+                breakBlock2(secondBody.node!)
+                if isGameWon()  && isGameWon2() && isGameWon3() {
+                    gameState.enter(GameOver.self)
+                    gameWon = true
+                }
+            }
+            if firstBody.categoryBitMask == BallCategory  && secondBody.categoryBitMask == BlockCategory3 {
+                breakBlock3(secondBody.node!)
+                if isGameWon()  && isGameWon2() && isGameWon3(){
                     gameState.enter(GameOver.self)
                     gameWon = true
                 }
@@ -318,6 +299,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         node.removeFromParent()
         score = score + 1
     }
+    func breakBlock2(_ node: SKNode) {
+        run(bambooBreakSound)
+        let particles = SKEmitterNode(fileNamed: "BrokenPlatform2")!
+        particles.position = node.position
+        particles.zPosition = 3
+        addChild(particles)
+        particles.run(SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.removeFromParent()]))
+        node.removeFromParent()
+        score = score + 2
+    }
+    func breakBlock3(_ node: SKNode) {
+        run(bambooBreakSound)
+        let particles = SKEmitterNode(fileNamed: "BrokenPlatform3")!
+        particles.position = node.position
+        particles.zPosition = 3
+        addChild(particles)
+        particles.run(SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.removeFromParent()]))
+        node.removeFromParent()
+        score = score + 5
+    }
     
     func randomFloat(from:CGFloat, to:CGFloat) -> CGFloat {
         let rand:CGFloat = CGFloat(Float(arc4random()) / 0xFFFFFFFF)
@@ -326,11 +327,174 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func isGameWon() -> Bool {
         var numberOfBricks = 0
-        self.enumerateChildNodes(withName: BlockCategoryName) {
+        
+     self.enumerateChildNodes(withName: BlockCategoryName) {
             node, stop in
             numberOfBricks = numberOfBricks + 1
         }
         return numberOfBricks == 0
+    }
+    func isGameWon2() -> Bool {
+        var numberOfBricks = 0
+        
+        self.enumerateChildNodes(withName: BlockCategoryName2) {
+            node, stop in
+            numberOfBricks = numberOfBricks + 1
+        }
+        return numberOfBricks == 0
+    }
+    func isGameWon3() -> Bool {
+        var numberOfBricks = 0
+        
+        self.enumerateChildNodes(withName: BlockCategoryName3) {
+            node, stop in
+            numberOfBricks = numberOfBricks + 1
+        }
+        return numberOfBricks == 0
+    }
+    
+    func generateBlocks(){
+        // 1.
+        let numberOfBlocks = 5
+        let blockWidth = SKSpriteNode(imageNamed: "block2").size.width
+        let totalBlocksWidth = blockWidth * CGFloat(numberOfBlocks)
+        // 2.
+        let xOffset = (frame.width - totalBlocksWidth) / 2
+        
+        // 3.
+        for i in 0..<numberOfBlocks {
+            let block = SKSpriteNode(imageNamed: "block.png")
+            block.position = CGPoint(x: 20 + CGFloat(CGFloat(i) + 0.5) * blockWidth,
+                                     y: frame.height * 0.95)
+            
+            block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
+            block.physicsBody!.allowsRotation = false
+            block.physicsBody!.friction = 0.0
+            block.physicsBody!.affectedByGravity = false
+            block.physicsBody!.isDynamic = false
+            block.name = BlockCategoryName
+            block.physicsBody!.categoryBitMask = BlockCategory
+            block.zPosition = 2
+            addChild(block)
+        }
+        
+        let block = SKSpriteNode(imageNamed: "block3.png")
+        block.position = CGPoint(x: ((blockWidth * 6) - 3),
+                                 y: frame.height * 0.95)
+        
+        block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
+        block.physicsBody!.allowsRotation = false
+        block.physicsBody!.friction = 0.0
+        block.physicsBody!.affectedByGravity = false
+        block.physicsBody!.isDynamic = false
+        block.name = BlockCategoryName3
+        block.physicsBody!.categoryBitMask = BlockCategory3
+        block.zPosition = 2
+        addChild(block)
+        
+        let numberOfBlocks1 = 3
+        for j in 0..<numberOfBlocks1 {
+            let block = SKSpriteNode(imageNamed: "block2.png")
+            block.position = CGPoint(x: ((blockWidth * 7) - 25) + CGFloat(CGFloat(j) + 0.5) * blockWidth,
+                                     y: frame.height * 0.95)
+
+            block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
+            block.physicsBody!.allowsRotation = false
+            block.physicsBody!.friction = 0.0
+            block.physicsBody!.affectedByGravity = false
+            block.physicsBody!.isDynamic = false
+            block.name = BlockCategoryName2
+            block.physicsBody!.categoryBitMask = BlockCategory2
+            block.zPosition = 2
+            addChild(block)
+        }
+        
+        let numberOfBlocks2 = 2
+        for j in 0..<numberOfBlocks2 {
+            let block = SKSpriteNode(imageNamed: "block3.png")
+            block.position = CGPoint(x: ((blockWidth * 10) - 25) + CGFloat(CGFloat(j) + 0.5) * blockWidth,
+                                     y: frame.height * 0.95)
+            
+            block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
+            block.physicsBody!.allowsRotation = false
+            block.physicsBody!.friction = 0.0
+            block.physicsBody!.affectedByGravity = false
+            block.physicsBody!.isDynamic = false
+            block.name = BlockCategoryName3
+            block.physicsBody!.categoryBitMask = BlockCategory3
+            block.zPosition = 2
+            addChild(block)
+        }
+        
+        let numberOfBlocks3 = 11
+        for j in 0..<numberOfBlocks3 {
+            let block = SKSpriteNode(imageNamed: "block.png")
+            block.position = CGPoint(x: (20) + CGFloat(CGFloat(j) + 0.5) * blockWidth,
+                                     y: frame.height * 0.9)
+            
+            block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
+            block.physicsBody!.allowsRotation = false
+            block.physicsBody!.friction = 0.0
+            block.physicsBody!.affectedByGravity = false
+            block.physicsBody!.isDynamic = false
+            block.name = BlockCategoryName3
+            block.physicsBody!.categoryBitMask = BlockCategory3
+            block.zPosition = 2
+            addChild(block)
+        }
+        
+//        let block2 = SKSpriteNode(imageNamed: "block3.png")
+//        block2.position = CGPoint(x: ((blockWidth * 10) - 2.5),
+//                                 y: frame.height * 0.95)
+//
+//        block2.physicsBody = SKPhysicsBody(rectangleOf: block2.frame.size)
+//        block2.physicsBody!.allowsRotation = false
+//        block2.physicsBody!.friction = 0.0
+//        block2.physicsBody!.affectedByGravity = false
+//        block2.physicsBody!.isDynamic = false
+//        block2.name = BlockCategoryName
+//        block2.physicsBody!.categoryBitMask = BlockCategory
+//        block2.zPosition = 2
+//        addChild(block2)
+//
+//
+//
+//        let numberOfBlocks2 = 3
+//        let blockWidth2 = SKSpriteNode(imageNamed: "block2").size.width
+//        let totalBlocksWidth2 = blockWidth2 * CGFloat(numberOfBlocks2)
+//        // 2.
+//        let xOffset2 = ((frame.width - totalBlocksWidth2) / 2 ) + totalBlocksWidth
+//        // 3.
+//        for i in 0..<numberOfBlocks2 {
+//            let block2 = SKSpriteNode(imageNamed: "block3.png")
+//            block2.position = CGPoint(x: xOffset2 + CGFloat(CGFloat(i) + 0.5) * blockWidth2,
+//                                      y: frame.height * 0.95)
+//
+//            block2.physicsBody = SKPhysicsBody(rectangleOf: block2.frame.size)
+//            block2.physicsBody!.allowsRotation = false
+//            block2.physicsBody!.friction = 0.0
+//            block2.physicsBody!.affectedByGravity = false
+//            block2.physicsBody!.isDynamic = false
+//            block2.name = BlockCategoryName
+//            block2.physicsBody!.categoryBitMask = BlockCategory
+//            block2.zPosition = 2
+//            addChild(block2)
+//        }
+//        for j in 0..<numberOfBlocks2 {
+//            let block2 = SKSpriteNode(imageNamed: "block4.png")
+//            block2.position = CGPoint(x: xOffset2 + CGFloat(CGFloat(j) + 0.5) * blockWidth2,
+//                                      y: frame.height * 0.9)
+//
+//            block2.physicsBody = SKPhysicsBody(rectangleOf: block2.frame.size)
+//            block2.physicsBody!.allowsRotation = false
+//            block2.physicsBody!.friction = 0.0
+//            block2.physicsBody!.affectedByGravity = false
+//            block2.physicsBody!.isDynamic = false
+//            block2.name = BlockCategoryName
+//            block2.physicsBody!.categoryBitMask = BlockCategory
+//            block2.zPosition = 2
+//            addChild(block2)
+//        }
     }
     
     
