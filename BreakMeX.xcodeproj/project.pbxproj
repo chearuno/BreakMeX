@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B68946B228FC39000B0B329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B689469228FC39000B0B329 /* Assets.xcassets */; };
-		0B68946D228FC3D300B0B329 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B68946C228FC3D300B0B329 /* fire.sks */; };
-		0B68946F228FF40F00B0B329 /* BrokenPlatform2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B68946E228FF40F00B0B329 /* BrokenPlatform2.sks */; };
-		0B689471228FF4AA00B0B329 /* BrokenPlatform3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B689470228FF4AA00B0B329 /* BrokenPlatform3.sks */; };
 		0B941F0B228D0E7700E69F28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B941F0A228D0E7700E69F28 /* AppDelegate.swift */; };
 		0B941F0D228D0E7800E69F28 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F0C228D0E7800E69F28 /* GameScene.sks */; };
 		0B941F11228D0E7800E69F28 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B941F10228D0E7800E69F28 /* GameScene.swift */; };
@@ -18,23 +15,24 @@
 		0B941F16228D0E7800E69F28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F14228D0E7800E69F28 /* Main.storyboard */; };
 		0B941F18228D0E7900E69F28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F17228D0E7900E69F28 /* Assets.xcassets */; };
 		0B941F1B228D0E7900E69F28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F19228D0E7900E69F28 /* LaunchScreen.storyboard */; };
-		0B941F26228D10A200E69F28 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B941F23228D10A200E69F28 /* GameOver.swift */; };
-		0B941F27228D10A200E69F28 /* Playing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B941F24228D10A200E69F28 /* Playing.swift */; };
-		0B941F28228D10A200E69F28 /* WaitingForTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B941F25228D10A200E69F28 /* WaitingForTap.swift */; };
-		0B941F2E228D113100E69F28 /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F2C228D112F00E69F28 /* BallTrail.sks */; };
-		0B941F2F228D113100E69F28 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F2D228D113000E69F28 /* BrokenPlatform.sks */; };
-		0B941F35228D114400E69F28 /* game-over.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F30228D114400E69F28 /* game-over.wav */; };
-		0B941F36228D114400E69F28 /* pongblip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F31228D114400E69F28 /* pongblip.wav */; };
-		0B941F37228D114400E69F28 /* BambooBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F32228D114400E69F28 /* BambooBreak.wav */; };
-		0B941F38228D114400E69F28 /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F33228D114400E69F28 /* game-won.mp3 */; };
-		0B941F39228D114400E69F28 /* paddleBlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0B941F34228D114400E69F28 /* paddleBlip.wav */; };
+		0BCED3BE229015A600AF70BA /* hit2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3BC229015A600AF70BA /* hit2.wav */; };
+		0BCED3BF229015A600AF70BA /* hit1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3BD229015A600AF70BA /* hit1.wav */; };
+		0BCED3C52290160900AF70BA /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3C02290160900AF70BA /* BallTrail.sks */; };
+		0BCED3C62290160900AF70BA /* BrokenPlatform2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3C12290160900AF70BA /* BrokenPlatform2.sks */; };
+		0BCED3C72290160900AF70BA /* BrokenPlatform3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3C22290160900AF70BA /* BrokenPlatform3.sks */; };
+		0BCED3C92290160900AF70BA /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3C42290160900AF70BA /* BrokenPlatform.sks */; };
+		0BCED3CF2290169900AF70BA /* BambooBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3CA2290169900AF70BA /* BambooBreak.wav */; };
+		0BCED3D02290169900AF70BA /* game-over.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3CB2290169900AF70BA /* game-over.wav */; };
+		0BCED3D12290169900AF70BA /* paddleBlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3CC2290169900AF70BA /* paddleBlip.wav */; };
+		0BCED3D22290169900AF70BA /* pongblip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3CD2290169900AF70BA /* pongblip.wav */; };
+		0BCED3D32290169900AF70BA /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BCED3CE2290169900AF70BA /* game-won.mp3 */; };
+		0BCED3D72290185B00AF70BA /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCED3D42290185B00AF70BA /* GameOver.swift */; };
+		0BCED3D82290185B00AF70BA /* Playing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCED3D52290185B00AF70BA /* Playing.swift */; };
+		0BCED3D92290185B00AF70BA /* WaitingForTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCED3D62290185B00AF70BA /* WaitingForTap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B689469228FC39000B0B329 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0B68946C228FC3D300B0B329 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fire.sks; sourceTree = "<group>"; };
-		0B68946E228FF40F00B0B329 /* BrokenPlatform2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = BrokenPlatform2.sks; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Particles/BrokenPlatform2.sks"; sourceTree = "<group>"; };
-		0B689470228FF4AA00B0B329 /* BrokenPlatform3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = BrokenPlatform3.sks; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Particles/BrokenPlatform3.sks"; sourceTree = "<group>"; };
 		0B941F07228D0E7700E69F28 /* BreakMeX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakMeX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B941F0A228D0E7700E69F28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B941F0C228D0E7800E69F28 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -44,16 +42,20 @@
 		0B941F17228D0E7900E69F28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B941F1A228D0E7900E69F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B941F1C228D0E7900E69F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B941F23228D10A200E69F28 /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOver.swift; path = "../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/GameOver.swift"; sourceTree = "<group>"; };
-		0B941F24228D10A200E69F28 /* Playing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Playing.swift; path = "../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Playing.swift"; sourceTree = "<group>"; };
-		0B941F25228D10A200E69F28 /* WaitingForTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingForTap.swift; path = "../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/WaitingForTap.swift"; sourceTree = "<group>"; };
-		0B941F2C228D112F00E69F28 /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = BallTrail.sks; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Particles/BallTrail.sks"; sourceTree = "<group>"; };
-		0B941F2D228D113000E69F28 /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = BrokenPlatform.sks; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Particles/BrokenPlatform.sks"; sourceTree = "<group>"; };
-		0B941F30228D114400E69F28 /* game-over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "game-over.wav"; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Sounds/game-over.wav"; sourceTree = "<group>"; };
-		0B941F31228D114400E69F28 /* pongblip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pongblip.wav; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Sounds/pongblip.wav"; sourceTree = "<group>"; };
-		0B941F32228D114400E69F28 /* BambooBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = BambooBreak.wav; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Sounds/BambooBreak.wav"; sourceTree = "<group>"; };
-		0B941F33228D114400E69F28 /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-won.mp3"; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Sounds/game-won.mp3"; sourceTree = "<group>"; };
-		0B941F34228D114400E69F28 /* paddleBlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = paddleBlip.wav; path = "../../../../../Downloads/Bamboo Breakout Starter/Bamboo Breakout/Sounds/paddleBlip.wav"; sourceTree = "<group>"; };
+		0BCED3BC229015A600AF70BA /* hit2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit2.wav; sourceTree = "<group>"; };
+		0BCED3BD229015A600AF70BA /* hit1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit1.wav; sourceTree = "<group>"; };
+		0BCED3C02290160900AF70BA /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallTrail.sks; sourceTree = "<group>"; };
+		0BCED3C12290160900AF70BA /* BrokenPlatform2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform2.sks; sourceTree = "<group>"; };
+		0BCED3C22290160900AF70BA /* BrokenPlatform3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform3.sks; sourceTree = "<group>"; };
+		0BCED3C42290160900AF70BA /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform.sks; sourceTree = "<group>"; };
+		0BCED3CA2290169900AF70BA /* BambooBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BambooBreak.wav; sourceTree = "<group>"; };
+		0BCED3CB2290169900AF70BA /* game-over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "game-over.wav"; sourceTree = "<group>"; };
+		0BCED3CC2290169900AF70BA /* paddleBlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = paddleBlip.wav; sourceTree = "<group>"; };
+		0BCED3CD2290169900AF70BA /* pongblip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pongblip.wav; sourceTree = "<group>"; };
+		0BCED3CE2290169900AF70BA /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-won.mp3"; sourceTree = "<group>"; };
+		0BCED3D42290185B00AF70BA /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		0BCED3D52290185B00AF70BA /* Playing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playing.swift; sourceTree = "<group>"; };
+		0BCED3D62290185B00AF70BA /* WaitingForTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingForTap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +106,9 @@
 		0B941F22228D106700E69F28 /* Game States */ = {
 			isa = PBXGroup;
 			children = (
-				0B941F23228D10A200E69F28 /* GameOver.swift */,
-				0B941F24228D10A200E69F28 /* Playing.swift */,
-				0B941F25228D10A200E69F28 /* WaitingForTap.swift */,
+				0BCED3D42290185B00AF70BA /* GameOver.swift */,
+				0BCED3D52290185B00AF70BA /* Playing.swift */,
+				0BCED3D62290185B00AF70BA /* WaitingForTap.swift */,
 			);
 			name = "Game States";
 			sourceTree = "<group>";
@@ -114,11 +116,13 @@
 		0B941F2A228D10EF00E69F28 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				0B941F32228D114400E69F28 /* BambooBreak.wav */,
-				0B941F30228D114400E69F28 /* game-over.wav */,
-				0B941F33228D114400E69F28 /* game-won.mp3 */,
-				0B941F34228D114400E69F28 /* paddleBlip.wav */,
-				0B941F31228D114400E69F28 /* pongblip.wav */,
+				0BCED3CA2290169900AF70BA /* BambooBreak.wav */,
+				0BCED3CB2290169900AF70BA /* game-over.wav */,
+				0BCED3CE2290169900AF70BA /* game-won.mp3 */,
+				0BCED3CC2290169900AF70BA /* paddleBlip.wav */,
+				0BCED3CD2290169900AF70BA /* pongblip.wav */,
+				0BCED3BD229015A600AF70BA /* hit1.wav */,
+				0BCED3BC229015A600AF70BA /* hit2.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -126,12 +130,11 @@
 		0B941F2B228D111D00E69F28 /* Particales */ = {
 			isa = PBXGroup;
 			children = (
-				0B689470228FF4AA00B0B329 /* BrokenPlatform3.sks */,
-				0B68946E228FF40F00B0B329 /* BrokenPlatform2.sks */,
-				0B941F2C228D112F00E69F28 /* BallTrail.sks */,
-				0B941F2D228D113000E69F28 /* BrokenPlatform.sks */,
+				0BCED3C42290160900AF70BA /* BrokenPlatform.sks */,
+				0BCED3C02290160900AF70BA /* BallTrail.sks */,
+				0BCED3C12290160900AF70BA /* BrokenPlatform2.sks */,
+				0BCED3C22290160900AF70BA /* BrokenPlatform3.sks */,
 				0B689469228FC39000B0B329 /* Assets.xcassets */,
-				0B68946C228FC3D300B0B329 /* fire.sks */,
 			);
 			path = Particales;
 			sourceTree = "<group>";
@@ -195,20 +198,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B941F16228D0E7800E69F28 /* Main.storyboard in Resources */,
-				0B941F2F228D113100E69F28 /* BrokenPlatform.sks in Resources */,
-				0B941F35228D114400E69F28 /* game-over.wav in Resources */,
-				0B941F38228D114400E69F28 /* game-won.mp3 in Resources */,
-				0B689471228FF4AA00B0B329 /* BrokenPlatform3.sks in Resources */,
-				0B68946F228FF40F00B0B329 /* BrokenPlatform2.sks in Resources */,
-				0B941F36228D114400E69F28 /* pongblip.wav in Resources */,
+				0BCED3C52290160900AF70BA /* BallTrail.sks in Resources */,
+				0BCED3D02290169900AF70BA /* game-over.wav in Resources */,
+				0BCED3D22290169900AF70BA /* pongblip.wav in Resources */,
 				0B68946B228FC39000B0B329 /* Assets.xcassets in Resources */,
-				0B941F2E228D113100E69F28 /* BallTrail.sks in Resources */,
-				0B941F39228D114400E69F28 /* paddleBlip.wav in Resources */,
-				0B941F37228D114400E69F28 /* BambooBreak.wav in Resources */,
+				0BCED3BF229015A600AF70BA /* hit1.wav in Resources */,
 				0B941F0D228D0E7800E69F28 /* GameScene.sks in Resources */,
 				0B941F18228D0E7900E69F28 /* Assets.xcassets in Resources */,
+				0BCED3D12290169900AF70BA /* paddleBlip.wav in Resources */,
+				0BCED3CF2290169900AF70BA /* BambooBreak.wav in Resources */,
+				0BCED3BE229015A600AF70BA /* hit2.wav in Resources */,
 				0B941F1B228D0E7900E69F28 /* LaunchScreen.storyboard in Resources */,
-				0B68946D228FC3D300B0B329 /* fire.sks in Resources */,
+				0BCED3D32290169900AF70BA /* game-won.mp3 in Resources */,
+				0BCED3C92290160900AF70BA /* BrokenPlatform.sks in Resources */,
+				0BCED3C62290160900AF70BA /* BrokenPlatform2.sks in Resources */,
+				0BCED3C72290160900AF70BA /* BrokenPlatform3.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,11 +224,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B941F11228D0E7800E69F28 /* GameScene.swift in Sources */,
-				0B941F28228D10A200E69F28 /* WaitingForTap.swift in Sources */,
+				0BCED3D72290185B00AF70BA /* GameOver.swift in Sources */,
 				0B941F13228D0E7800E69F28 /* GameViewController.swift in Sources */,
+				0BCED3D92290185B00AF70BA /* WaitingForTap.swift in Sources */,
+				0BCED3D82290185B00AF70BA /* Playing.swift in Sources */,
 				0B941F0B228D0E7700E69F28 /* AppDelegate.swift in Sources */,
-				0B941F26228D10A200E69F28 /* GameOver.swift in Sources */,
-				0B941F27228D10A200E69F28 /* Playing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

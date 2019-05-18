@@ -18,8 +18,6 @@ let GameMessageName = "gameMessage"
 let ThemeCategoryName = "theme"
 //let GameThemeName = "gameTheme"
 
-
-
 let BallCategory   : UInt32 = 0x1 << 0
 let BottomCategory : UInt32 = 0x1 << 1
 let BlockCategory  : UInt32 = 0x1 << 2
@@ -27,10 +25,6 @@ let PaddleCategory : UInt32 = 0x1 << 3
 let BorderCategory : UInt32 = 0x1 << 4
 let BlockCategory2  : UInt32 = 0x1 << 5
 let BlockCategory3  : UInt32 = 0x1 << 6
-
-
-
-
 
 //    let playableRect: CGRect
 
@@ -73,6 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let blipSound = SKAction.playSoundFileNamed("pongblip", waitForCompletion: false)
     let blipPaddleSound = SKAction.playSoundFileNamed("paddleBlip", waitForCompletion: false)
     let bambooBreakSound = SKAction.playSoundFileNamed("BambooBreak", waitForCompletion: false)
+    let hit1Sound = SKAction.playSoundFileNamed("hit1", waitForCompletion: false)
+    let hit2Sound = SKAction.playSoundFileNamed("hit2", waitForCompletion: false)
     let gameWonSound = SKAction.playSoundFileNamed("game-won", waitForCompletion: false)
     let gameOverSound = SKAction.playSoundFileNamed("game-over", waitForCompletion: false)
     
@@ -300,7 +296,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = score + 1
     }
     func breakBlock2(_ node: SKNode) {
-        run(bambooBreakSound)
+        run(hit1Sound)
         let particles = SKEmitterNode(fileNamed: "BrokenPlatform2")!
         particles.position = node.position
         particles.zPosition = 3
@@ -310,7 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = score + 2
     }
     func breakBlock3(_ node: SKNode) {
-        run(bambooBreakSound)
+        run(hit2Sound)
         let particles = SKEmitterNode(fileNamed: "BrokenPlatform3")!
         particles.position = node.position
         particles.zPosition = 3
