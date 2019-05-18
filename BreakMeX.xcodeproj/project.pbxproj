@@ -88,6 +88,7 @@
 		0B941F09228D0E7700E69F28 /* BreakMeX */ = {
 			isa = PBXGroup;
 			children = (
+				0B941F22228D106700E69F28 /* Game States */,
 				0B948D1522901A3300FC98F0 /* Audio */,
 				0B941F2B228D111D00E69F28 /* Particales */,
 				0B941F2A228D10EF00E69F28 /* Sounds */,
@@ -99,7 +100,6 @@
 				0B941F17228D0E7900E69F28 /* Assets.xcassets */,
 				0B941F19228D0E7900E69F28 /* LaunchScreen.storyboard */,
 				0B941F1C228D0E7900E69F28 /* Info.plist */,
-				0B941F22228D106700E69F28 /* Game States */,
 			);
 			path = BreakMeX;
 			sourceTree = "<group>";

@@ -12,8 +12,8 @@ import GameplayKit
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
-let BlockCategoryName2 = "block1"
-let BlockCategoryName3 = "block2"
+let BlockCategoryName2 = "block2"
+let BlockCategoryName3 = "block3"
 let GameMessageName = "gameMessage"
 let ThemeCategoryName = "theme"
 //let GameThemeName = "gameTheme"
@@ -353,9 +353,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 1.
         let numberOfBlocks = 5
         let blockWidth = SKSpriteNode(imageNamed: "block2").size.width
-        let totalBlocksWidth = blockWidth * CGFloat(numberOfBlocks)
+        //let totalBlocksWidth = blockWidth * CGFloat(numberOfBlocks)
         // 2.
-        let xOffset = (frame.width - totalBlocksWidth) / 2
+        //let xOffset = (frame.width - totalBlocksWidth) / 2
         
         // 3.
         for i in 0..<numberOfBlocks {
@@ -368,8 +368,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             block.physicsBody!.friction = 0.0
             block.physicsBody!.affectedByGravity = false
             block.physicsBody!.isDynamic = false
-            block.name = BlockCategoryName
-            block.physicsBody!.categoryBitMask = BlockCategory
+            block.name = BlockCategoryName3
+            block.physicsBody!.categoryBitMask = BlockCategory3
             block.zPosition = 2
             addChild(block)
         }
@@ -383,15 +383,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         block.physicsBody!.friction = 0.0
         block.physicsBody!.affectedByGravity = false
         block.physicsBody!.isDynamic = false
-        block.name = BlockCategoryName3
-        block.physicsBody!.categoryBitMask = BlockCategory3
+        block.name = BlockCategoryName2
+        block.physicsBody!.categoryBitMask = BlockCategory2
         block.zPosition = 2
         addChild(block)
         
         let numberOfBlocks1 = 3
         for j in 0..<numberOfBlocks1 {
             let block = SKSpriteNode(imageNamed: "block2.png")
-            block.position = CGPoint(x: ((blockWidth * 7) - 25) + CGFloat(CGFloat(j) + 0.5) * blockWidth,
+            block.position = CGPoint(x: ((blockWidth * 7) - 26) + CGFloat(CGFloat(j) + 0.5) * blockWidth,
                                      y: frame.height * 0.95)
 
             block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
@@ -399,8 +399,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             block.physicsBody!.friction = 0.0
             block.physicsBody!.affectedByGravity = false
             block.physicsBody!.isDynamic = false
-            block.name = BlockCategoryName2
-            block.physicsBody!.categoryBitMask = BlockCategory2
+            block.name = BlockCategoryName
+            block.physicsBody!.categoryBitMask = BlockCategory
             block.zPosition = 2
             addChild(block)
         }
@@ -408,7 +408,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let numberOfBlocks2 = 2
         for j in 0..<numberOfBlocks2 {
             let block = SKSpriteNode(imageNamed: "block3.png")
-            block.position = CGPoint(x: ((blockWidth * 10) - 25) + CGFloat(CGFloat(j) + 0.5) * blockWidth,
+            block.position = CGPoint(x: ((blockWidth * 10) - 26) + CGFloat(CGFloat(j) + 0.5) * blockWidth,
                                      y: frame.height * 0.95)
             
             block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
@@ -416,8 +416,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             block.physicsBody!.friction = 0.0
             block.physicsBody!.affectedByGravity = false
             block.physicsBody!.isDynamic = false
-            block.name = BlockCategoryName3
-            block.physicsBody!.categoryBitMask = BlockCategory3
+            block.name = BlockCategoryName2
+            block.physicsBody!.categoryBitMask = BlockCategory2
             block.zPosition = 2
             addChild(block)
         }
