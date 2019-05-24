@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import CoreMotion
 
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
@@ -29,6 +30,9 @@ let BlockCategory3  : UInt32 = 0x1 << 6
 //    let playableRect: CGRect
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var motionManager = CMMotionManager()
+    var destX:CGFloat  = 0.0
     
     var isFingerOnPaddle = false
     // var isFingerOnTheme = false
@@ -129,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             y: CGFloat(6))
         self.addChild(scoreLabel)
         
-       generateBlocks()
+        generateBlocks()
         
         let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
         gameMessage.name = GameMessageName
@@ -155,6 +159,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         gameState.enter(WaitingForTap.self)
+        
+        //        if let ship = childNode(withName: PaddleCategoryName) as? SKSpriteNode {
+        //            // 2
+        //            if let data = motionManager.accelerometerData {
+        //                // 3
+        //                if fabs(data.acceleration.x) > 0.2 {
+        //                    // 4 How do you move the ship?
+        //                    print("Acceleration: \(data.acceleration.x)")
+        //                }
+        //            }
+        //        }
+        
+        //        if motionManager.isAccelerometerAvailable {
+        //            let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
+        //            // 2
+        //            motionManager.accelerometerUpdateInterval = 0.01
+        //            motionManager.startAccelerometerUpdates(to: .main) {
+        //                (data, error) in
+        //                guard let data = data, error == nil else {
+        //                    return
+        //                }
+        //
+        //                // 3
+        ////                let currentX = self.paddle.position.x
+        ////                self.destX = currentX + CGFloat(data.acceleration.x * 500)
+        //                //                paddle.position = CGPoint(x: self.destX, y: paddle.position.y)
+        //                print(data.acceleration.x)
+        //            }
+        //        }
+        //        //        let action = SKAction.moveTo(x: destX, duration: 1)
+        //        //        paddle.run(action)
     }
     
     // MARK: Events
@@ -194,7 +229,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         }
     }
-    
+    func motion(){
+        
+    }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // 1.
         if isFingerOnPaddle {
@@ -221,9 +258,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         gameState.update(deltaTime: currentTime)
         
-//        if (ball.position.y < paddle.position.y) {
-//            print("pass the paddle.")
-//        }
+        //        if (ball.position.y < paddle.position.y) {
+        //            print("pass the paddle.")
+        //        }
     }
     
     
@@ -243,11 +280,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 secondBody = contact.bodyA
             }
             // React to contact with bottom of screen
-           
-             if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == BottomCategory {
+            
+            if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == BottomCategory {
                 print("Hit bottom. First contact has been made.")
                 life = life - 1
-
+                
             }
             if (life <= 0 ){
                 gameState.enter(GameOver.self)
@@ -331,7 +368,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func isGameWon() -> Bool {
         var numberOfBricks = 0
         
-     self.enumerateChildNodes(withName: BlockCategoryName) {
+        self.enumerateChildNodes(withName: BlockCategoryName) {
             node, stop in
             numberOfBricks = numberOfBricks + 1
         }
@@ -401,7 +438,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let block = SKSpriteNode(imageNamed: "block2.png")
             block.position = CGPoint(x: ((blockWidth * 7) - 26) + CGFloat(CGFloat(j) + 0.5) * blockWidth,
                                      y: frame.height * 0.95)
-
+            
             block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
             block.physicsBody!.allowsRotation = false
             block.physicsBody!.friction = 0.0
@@ -446,7 +483,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             block.zPosition = 2
             addChild(block)
         }
-    
+        
     }
     
 }
